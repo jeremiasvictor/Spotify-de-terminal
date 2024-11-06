@@ -6,6 +6,10 @@ import time
 from colorama import Fore, Back, Style
 
 #funcoes
+
+def limpar_tela():
+    os.system("cls" if os.name == "nt" else "clear")
+
 def menu():
     print("=-"*25)
     print(Fore.GREEN + "O que você quer ouvir hoje?" + Style.RESET_ALL)
@@ -51,7 +55,7 @@ def escutar_playlist(playlist): #1
     if len(playlist) == 0:
     
         while True:
-            os.system("cls" if os.name == "nt" else "clear")
+            limpar_tela()
             print(Fore.GREEN + "Sua playlist está vazia!" + Fore.RESET)
             opc = input("Digite 0 para adicionar uma música na playlist ou 1 para voltar ao menu: ")
             if opc == "0":
@@ -66,7 +70,7 @@ def escutar_playlist(playlist): #1
                 input(Style.BRIGHT + "Tecle ENTER para continuar..." + Style.RESET_ALL)
 
     while True:
-        os.system("cls" if os.name == "nt" else "clear")
+        limpar_tela()
         opc = input("Digite 0 para reproduzir aleatoriamente ou digite 1 para reproduzir em ordem: ")
         print("=-"*25)
 
@@ -84,7 +88,7 @@ def escutar_playlist(playlist): #1
                     continue
 
                 for key in playlist.keys():
-                    os.system("cls" if os.name == "nt" else "clear")
+                    limpar_tela()
                     detalhes = playlist[key].split(" - ")
                     musica_title = detalhes[0].title()
                     cantor_title = detalhes[1].title()
@@ -99,7 +103,7 @@ def escutar_playlist(playlist): #1
 
         elif opc == "1":
             for key in sorted(playlist.keys()):
-                os.system("cls" if os.name == "nt" else "clear")
+                limpar_tela()
                 detalhes = playlist[key].split(" - ")
                 musica_title = detalhes[0].title()
                 cantor_title = detalhes[1].title()
@@ -115,7 +119,7 @@ def escutar_playlist(playlist): #1
             continue
         
         while True:
-            os.system("cls" if os.name == "nt" else "clear")
+            limpar_tela()
             print("Playlist finalizada.")
             opc = input("Digite 0 para voltar ao menu ou digite 1 para tocar a playlist novamente: ")
             print("=-"*25)
@@ -154,14 +158,14 @@ def adicionar_musica(playlist, nome_musica, nome_cantor): #2
 
 def remover_musica(playlist): #3
     if len(playlist) == 0:
-        os.system("cls" if os.name == "nt" else "clear")
+        limpar_tela()
         print(Fore.GREEN + "Sua playlist está vazia!" + Style.RESET_ALL)
         input(Style.BRIGHT + "Tecle ENTER para continuar..." + Style.RESET_ALL)
         print("=-"*25)
         return 
 
     while True:
-        os.system("cls" if os.name == "nt" else "clear")
+        limpar_tela()
         opc = input("Digite 0 para remover pelo nome e 1 para remover pela posição: ")
         musica_deletada = None
         if opc == "0":
@@ -178,7 +182,7 @@ def remover_musica(playlist): #3
 
         elif opc == "1":
             while True:
-                os.system("cls" if os.name == "nt" else "clear")
+                limpar_tela()
                 posicao = input(Style.BRIGHT + "Digite a posição da música que quer deletar na playlist: " + Style.RESET_ALL)
 
                 if posicao.isnumeric():
@@ -222,7 +226,7 @@ def remover_musica(playlist): #3
 def exibir_playlist(playlist): #4
         if len(playlist) == 0:
             while True:
-                os.system("cls" if os.name == "nt" else "clear")
+                limpar_tela()
                 print(Fore.GREEN + "Sua playlist está vazia!" + Style.RESET_ALL)
                 opc = input("Digite 0 para adicionar uma música na playlist ou 1 para voltar ao menu: ")
                 if opc == "0":
@@ -238,7 +242,7 @@ def exibir_playlist(playlist): #4
                     input(Style.BRIGHT + "Tecle ENTER para continuar..." + Style.RESET_ALL)
                     continue
                 
-        os.system("cls" if os.name == "nt" else "clear")
+        limpar_tela()
         print(Fore.GREEN + "Sua playlist principal\n" + Fore.RESET)
         print(Style.BRIGHT + f"{"#":<5} | {"Título":<15} | {"Cantor":<15}" + Style.RESET_ALL)
         for key in playlist.keys():
