@@ -3,7 +3,6 @@ from funcoes import *
 import os
 
 #main
-
 nome_arquivo = "playlist.txt"
 playlist = carregar_playlist(nome_arquivo)
 

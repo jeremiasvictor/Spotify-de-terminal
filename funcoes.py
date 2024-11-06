@@ -214,9 +214,9 @@ def remover_pela_posicao(playlist):
         if posicao.isnumeric():
             posicao = int(posicao) - 1
             if 0 <= posicao < len(playlist):
-                key_to_remove = list(playlist.keys())[posicao]
-                detalhes = playlist[key_to_remove].split(" - ")
-                playlist.pop(key_to_remove)
+                posicao_remover = list(playlist.keys())[posicao]
+                detalhes = playlist[posicao_remover].split(" - ")
+                playlist.pop(posicao_remover)
                 return detalhes[0]
             else:
                 print(Fore.GREEN + "Posição inválida!" + Fore.RESET)
@@ -252,36 +252,6 @@ def exibir_playlist(playlist, index=0):
         print()
         input(Style.BRIGHT + "Tecle ENTER para continuar..." + Style.RESET_ALL)
         print("=-" * 25) 
-
-'''
-def exibir_playlist(playlist): #4
-        if len(playlist) == 0:
-            while True:
-                limpar_tela()
-                print(Fore.GREEN + "Sua playlist está vazia!" + Style.RESET_ALL)
-                opc = input("Digite 0 para adicionar uma música na playlist ou 1 para voltar ao menu: ")
-                if opc == "0":
-                    nome_musica = input(Style.BRIGHT + "Digite o nome da música: " + Style.RESET_ALL)
-                    nome_cantor = input(Style.BRIGHT + "Digite o nome do cantor: " + Style.RESET_ALL)
-                    adicionar_musica(playlist, nome_musica, nome_cantor)
-                    break
-                    
-                elif opc == "1":
-                    return
-                else:
-                    print(Fore.GREEN + "Opção inválida!" + Fore.RESET)
-                    input(Style.BRIGHT + "Tecle ENTER para continuar..." + Style.RESET_ALL)
-                    continue
-                
-        limpar_tela()
-        print(Fore.GREEN + "Sua playlist principal\n" + Fore.RESET)
-        print(Style.BRIGHT + f"{"#":<5} | {"Título":<15} | {"Cantor":<15}" + Style.RESET_ALL)
-        for key in playlist.keys():
-            detalhes = playlist[key].split(" - ")
-            print(f"{(key+1):<5} | {detalhes[0]:<15} | {detalhes[1]:<15}")
-        input(Style.BRIGHT + "\nTecle ENTER para voltar para o menu..." + Style.RESET_ALL)
-        print("=-"*25)
-'''
         
 def carregar_playlist(nome_arquivo):
     try:
